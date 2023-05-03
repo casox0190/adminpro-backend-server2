@@ -1,7 +1,7 @@
 const {response}=require('express');
 
 const bcrypt=require('bcryptjs');
-const Usuario=require('../models/usuarios');
+const Usuario=require('../models/usuario');
 const {generarJWT}=require('../helpers/JWT');
 
 
@@ -22,8 +22,8 @@ try {
     }
 
     //Verificar contraseña
-    const validPassword=bcrypt.compareSync(password,usuarioDB.password);
-    if(!validPassword){
+    const validarPassword=bcrypt.compareSync(password,usuarioDB.password);
+    if(!validarPassword){
         return res.status(404).json({
             ok:false,
             msg:'Contraseña no valida'
